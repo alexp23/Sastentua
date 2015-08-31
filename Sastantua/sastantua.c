@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
 void	ft_putchar(char c)
 {
@@ -23,17 +24,20 @@ void	void_char(int nb_pallier, int pallier, int moin_nb)
 	int count_line;
 	int count_p;
 	int size_char;
-
+	int total_size;
+	
+	total_size = 0;
 	i = 1;
 	count_line = 1;
 	count_p = 1;
 	size_char = 0;
 	while (i <= nb_pallier)
 	{
-		size_char = size_char + 4 + i;
+		total_size = i;
 		i ++;
 	}
-	size_char = size_char - 4 + pallier;
+	printf("%d", total_size);
+	size_char = total_size - 4 + pallier;
 	i = 0;
 	while (i <= size_char - moin_nb)
 	{	
@@ -65,7 +69,7 @@ void	palliers(int num_pal)
 		while (count_line <= nb_line)
 		{
 			moin_nb = count_line;
-			void_char(temp_rec2, num_pal, moin_nb);
+			void_char(temp_rec, num_pal, moin_nb);
 			while(count_char <= nb_char)
 			{
 				if (count_char == 1)
