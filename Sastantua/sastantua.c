@@ -31,17 +31,9 @@ void	void_char(int nb_pallier, int pallier, int moin_nb)
 	count_line = 1;
 	count_p = 1;
 	size_char = 0;
-	if (pallier == 2)
+	if (pallier > 1)
 	{
-		pallier --;
-		size_char = size_char + ((2 * pallier) + (2 + pallier));
-	}
-	else if (pallier > 2)
-	{
-		pallier -= 2;
-		size_char = ((2 * pallier) + (2 + pallier));
-		pallier ++;
-		size_char = size_char + ((2 * pallier) + (2 + pallier));
+		
 	}
 	printf("%d\n", size_char);
 	/*while (i <= nb_pallier)
