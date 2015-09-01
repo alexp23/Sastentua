@@ -31,15 +31,26 @@ void	void_char(int nb_pallier, int pallier, int moin_nb)
 	count_line = 1;
 	count_p = 1;
 	size_char = 0;
-	while (i <= nb_pallier)
+	if (pallier == 2)
 	{
-		total_size = i;
-		i ++;
+		pallier --;
+		size_char = size_char + ((2 * pallier) + (2 + pallier));
 	}
-	printf("%d", total_size);
-	size_char = total_size - 4 + pallier;
+	else if (pallier > 2)
+	{
+		pallier -= 2;
+		size_char = ((2 * pallier) + (2 + pallier));
+		pallier ++;
+		size_char = size_char + ((2 * pallier) + (2 + pallier));
+	}
+	printf("%d\n", size_char);
+	/*while (i <= nb_pallier)
+	{
+		i ++;
+	}*/
+	total_size = 45 - size_char;
 	i = 0;
-	while (i <= size_char - moin_nb)
+	while (i <= total_size - moin_nb)
 	{	
 		ft_putchar('|');
 		i++;
@@ -86,7 +97,7 @@ void	palliers(int num_pal)
 			ft_putchar('\n');
 		}
 	temp_rec2--;
-	nb_char += 6;
+	nb_char += 4;
 	num_pal++;	
 	}
 }
