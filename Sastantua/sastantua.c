@@ -18,6 +18,20 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
+int	ft_atoi(char *str)
+{
+	int i;
+	int nb;
+
+	i = 0;
+	nb = 0;
+	while (str[i])
+	{
+		nb = nb * 10 + str[i] - 48;	
+		i++;
+	}
+	return (nb);
+}
 void	void_char(int nb_pallier, int pallier, int moin_nb)
 {
 	int i;
@@ -27,24 +41,21 @@ void	void_char(int nb_pallier, int pallier, int moin_nb)
 	int total_size;
 	
 	total_size = 0;
-	i = 1;
-	count_line = 1;
-	count_p = 1;
-	size_char = 0;
-	if (pallier > 1)
-	{
-		
-	}
-	printf("%d\n", size_char);
-	/*while (i <= nb_pallier)
-	{
-		i ++;
-	}*/
-	total_size = 45 - size_char;
 	i = 0;
-	while (i <= total_size - moin_nb)
+	count_line = 1;
+	count_p = 3;
+	size_char = 0;
+	i = 0;
+	while (i < nb_pallier)
+	{
+		size_char = size_char + 5 + i;
+		i++;
+	}
+	i = 0;
+	size_char -= 2;
+	while (i <= size_char - moin_nb)
 	{	
-		ft_putchar('|');
+		ft_putchar(' ');
 		i++;
 	}		
 }	
@@ -63,6 +74,7 @@ void	palliers(int num_pal)
 	temp_rec2	= num_pal;
 	num_pal		= 1;
 	nb_char 	= num_pal + 2;
+	moin_nb		= 0;
 	while (num_pal <= temp_rec)
 	{
 		count_line 		= 1;
@@ -71,7 +83,6 @@ void	palliers(int num_pal)
 
 		while (count_line <= nb_line)
 		{
-			moin_nb = count_line;
 			void_char(temp_rec, num_pal, moin_nb);
 			while(count_char <= nb_char)
 			{
@@ -83,6 +94,7 @@ void	palliers(int num_pal)
 					ft_putchar('*');
 				count_char++;
 			}
+			moin_nb++;
 			count_line++;
 			count_char = 1;
 			nb_char += 2;
@@ -90,7 +102,8 @@ void	palliers(int num_pal)
 		}
 	temp_rec2--;
 	nb_char += 4;
-	num_pal++;	
+	num_pal++;
+	moin_nb += 2;
 	}
 }
 void	la_porte()
@@ -98,20 +111,13 @@ void	la_porte()
 
 }
 
-void	sastantua(int nb_pallier)
-{	
-	int count;
-	
-	count = 0;
-	while (count <= nb_pallier)
-	{
-		palliers(count);
-		count++;
-	}
-}
-
-int		main(void)
+int		main(int argc, char **argv)
 {
-	palliers(5);
+	int nb;
+
+	if (argc != 2)
+		return (0);
+	nb = ft_atoi(argv[1]);
+	palliers(nb);
 	return (0);
 }
